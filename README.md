@@ -28,12 +28,20 @@ This website is a react app, built using HYML, Javascript, and CSS.
 Time Estimates
 For each of the lab features, make an estimate of the time it will take you to complete the feature, and record your start and finish times for that feature:
 
-Name of feature: ________________________________
+Name of feature:
 
-Estimate of time needed to complete: _____
+1. Set up your React repository & API keys.
 
-Start time: _____
+2. Locations: As a user of City Explorer, I want to enter the name of a location so that I can see the exact latitude and longitude of that location.
 
-Finish time: _____
+3. Map: As a user, I want to see a map of the city so that I can see the layout of the area I want to explore.
 
-Actual time needed to complete: _____
+4. Errors: As a user, I want clear messages if something goes wrong so I know if I need to make any changes or try again in a different manner.
+
+Estimate of time needed to complete: One hour and half.
+
+Start time: 3pm
+
+Finish time: 5:20pm
+
+Actual time needed to complete: 2 hous and 20 minute.
