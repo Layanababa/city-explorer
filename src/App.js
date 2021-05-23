@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button'
+import Alert from 'react-bootstrap/Alert'
 
 class App extends React.Component{
 
@@ -76,6 +77,12 @@ class App extends React.Component{
       }
     </Form.Text>
   </Form.Group>
+  {this.state.errorMessage &&
+
+<Alert variant="danger">
+Not Found!!!!!! Chooooose anoooother one!!!!!
+</Alert>
+}
 </Form>
       {/* <form onSubmit={this.getResult} >
         <div style={{ padding:'15px'}}>
