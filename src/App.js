@@ -53,12 +53,13 @@ class App extends React.Component{
       <h1 style={{textAlign:'center', background:'#f6e6e4', color:'#114e60' , margin:'0 5px 20px 5px' , padding:'30px', fontSize:'bold',fontWeight:'20px'}}>
         City Explorer
       </h1>
-      <Form onSubmit={this.getResult} >
+      <Form onSubmit={this.getResult}  style={{marginLeft:'600px'}}  >
   <Form.Group controlId="formGroupEmail">
-    <Form.Label>Location Name:  </Form.Label>
-    <Form.Control onChange={this.requiredLocation} type="text" placeholder="Add a city name." />
+    <Form.Label style={{borderRadius:'10px', padding:'13px', background:'#f6e6e4',color:'#114e60', fontSize:'18px',borderStyle:'solid ', borderWidth:'2px'}}>Location Name:  </Form.Label>
+    <Form.Control onChange={this.requiredLocation} type="text" placeholder="Add a city name." style={{borderRadius:'10px', padding:'15px', background:'#f6e6e4',color:'#114e60', fontSize:'18px', marginLeft:'20px', borderWidth:'2px'}} />
   </Form.Group>
-  <Button variant="primary" type="submit">
+  <Button 
+ style={{marginLeft:'150px',marginTop:'20px', color :'#114e60',background:'#f6e6e4',padding:'5px', borderRadius:'5px', borderWidth:'2px'}} variant="primary" type="submit">
   Get a result
   </Button >
   <Form.Group controlId="formGroupEmail">
