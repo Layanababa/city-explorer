@@ -1,9 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 import './App.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button'
 import Alert from 'react-bootstrap/Alert'
+import Weather from './Weather';
 
 class App extends React.Component{
 
@@ -13,21 +15,33 @@ class App extends React.Component{
       location:'',
       locationData:'',
       show:false,
-      errorMessage:false
+      errorMessage:false,
+      alertShow:false,
+      weatherShow:false,
+      weatherInfo:{}
+
     }
   }
 
   getResult=async(item)=>{
     item.preventDefault();
 
-    let locationURL=` https://eu1.locationiq.com/v1/search.php?key=pk.5940b4e56c7b6248e4e98fb6a9efd8e4&q=${this.state.location}&format=json`;
+    let locationURL=` https://eu1.locationiq.com/v1/search.php?key=pk.5940b4e56c7b6248e4e98fb6a9efd8e4&q=${this.state.location.toLowerCase()}&format=json`;
+
+    
+    const url = `http://localhost:3001/weather?locationName=${this.state.location.toLowerCase()}`;
+   
+      const weatherData = await axios.get(url);
+  
 
     try{
       let resultURl= await axios.get(locationURL);
       this.setState({
         locationData:resultURl.data[0],
-        show:true
-
+        show:true,
+        alertShow:false,
+        weatherShow:true,    
+        weatherInfo:weatherData.data
       })
     }
   
@@ -35,7 +49,11 @@ class App extends React.Component{
   catch {
     this.setState({
       show:false,
-      errorMessage:true
+      errorMessage:true,
+      alertShow:true,
+      weatherShow:false
+      
+     
     })
   }
   }
@@ -45,6 +63,19 @@ class App extends React.Component{
     })
 
   }
+
+  // getWeatherData=async()=>{
+  //   let serverRoute = process.env.REACT_APP_SERVER;
+
+  //   const url = `${serverRoute}/weather?locationName=${this.state.location}`;
+   
+  //   const locationArr = await axios.get(url);
+  //   console.log(locationArr.data);
+  //   this.setState({
+  //     weatherInfo:locationArr.data
+  //   })
+
+  // }
 
 
   render() {
@@ -78,32 +109,23 @@ class App extends React.Component{
       }
     </Form.Text>
   </Form.Group>
-  {this.state.errorMessage &&
+  {this.state.alertShow &&
 
 <Alert variant="danger">
 Not Found!!!!!! Chooooose anoooother one!!!!!
 </Alert>
 }
+{
+  this.state.weatherShow&&
+  <Weather
+location={this.state.location}
+weatherInfo={this.state.weatherInfo}
+  />
+
+}
+
 </Form>
-      {/* <form onSubmit={this.getResult} >
-        <div style={{ padding:'15px'}}>
-        <input type='text' placeholder='Add a city name.' onChange={this.requiredLocation} />
-        </div>
-        
-        <div style={{padding:'15px'}}>
-        <input type='submit' value='Get a result.'/>
-        </div>
-        
-        
-      </form>
-      <p>
-        The Location : {this.state.locationData.display_name}
-      </p>
-      {this.state.show&&
-      <img style={{width:'250px',height:'250px'}}
-      src={`https://maps.locationiq.com/v3/staticmap?key=pk.5940b4e56c7b6248e4e98fb6a9efd8e4&center=${this.state.locationData.lat},${this.state.locationData.lon}`} alt=''
-      />
-      } */}
+
       </>
     )
     }

@@ -38,10 +38,14 @@ Name of feature:
 
 4. Errors: As a user, I want clear messages if something goes wrong so I know if I need to make any changes or try again in a different manner.
 
-Estimate of time needed to complete: One hour and half.
+5. Weather (placeholder): As a user of City Explorer, I want to see weather info for the city I searched, so that I know how to pack for an upcoming trip.
 
-Start time: 3pm
+6. Errors (revisited): As a user, I want clear messages if something goes wrong so I know if I need to make any changes or try again in a different manner.
 
-Finish time: 5:20pm
+Estimate of time needed to complete: 5 hours
 
-Actual time needed to complete: 2 hous and 20 minute.
+Start time: 3:15pm
+
+Finish time: until now
+
+Actual time needed to complete: 7 hours
