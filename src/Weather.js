@@ -1,13 +1,13 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card'
 class Weather extends React.Component{
-constructor (props){
-    super(props);
-        this.state={
-            weatherInfo:this.props.weatherInfo
-        }
+// constructor (props){
+//     super(props);
+//         this.state={
+//             weatherInfo:this.props.weatherInfo
+//         }
     
-}
+// }
     render(){
         return(
            <>
