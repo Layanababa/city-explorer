@@ -42,10 +42,14 @@ Name of feature:
 
 6. Errors (revisited): As a user, I want clear messages if something goes wrong so I know if I need to make any changes or try again in a different manner.
 
+7. Weather (live): As a user of City Explorer, I want to see weather info for the city I searched, so that I know how to pack for an upcoming trip.
+
+8. Movies: As a user of City Explorer, I want to see info about movies related to the city I searched, so that I can learn more about the destination.
+
+
+
 Estimate of time needed to complete: 5 hours
 
-Start time: 3:15pm
+Start and Finish time: 3:40pm-6pm and 7:30pm - 10pm
 
-Finish time: until now
-
-Actual time needed to complete: 7 hours
+Actual time needed to complete: 5 hours and 40 mins. 
