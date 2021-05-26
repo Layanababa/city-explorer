@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button'
 import Alert from 'react-bootstrap/Alert'
 import Weather from './Weather';
-
+import Movies from './Movies';
 class App extends React.Component{
 
   constructor(props){
@@ -18,30 +18,37 @@ class App extends React.Component{
       errorMessage:false,
       alertShow:false,
       weatherShow:false,
-      weatherInfo:{}
+      weatherInfo:{},
+      moviesShow:false,
+      moviesInfo:{}
 
     }
   }
 
   getResult=async(item)=>{
     item.preventDefault();
+let server_Link='http://localhost:3001';
+    // let locationURL=` https://eu1.locationiq.com/v1/search.php?key=pk.5940b4e56c7b6248e4e98fb6a9efd8e4&q=${this.state.location.toLowerCase()}&format=json`;
 
-    let locationURL=` https://eu1.locationiq.com/v1/search.php?key=pk.5940b4e56c7b6248e4e98fb6a9efd8e4&q=${this.state.location.toLowerCase()}&format=json`;
 
-
-    const serverURl=process.env.REACT_APP_SERVER
-    const url = `${serverURl}/weather?locationName=${this.state.location.toLowerCase()}`;
+    // const serverURl=process.env.REACT_APP_SERVER
+    const weatherData =  await axios.get(`${server_Link}/weather?locationName=${this.state.location.toLowerCase()}`);
+    const movieData=await axios.get(`${server_Link}/movies?locationName=${this.state.location.toLowerCase()}`)
    
       
       try{
-        const weatherData = await axios.get(url);
-      let resultURl= await axios.get(locationURL);
+        // const weatherData = await axios.get(url);
+      // let resultURl= await axios.get(locationURL);
       this.setState({
-        locationData:resultURl.data[0],
+        locationData:weatherData.data[0],
+        moviLlocationData:movieData.data[0],
         show:true,
         alertShow:false,
         weatherShow:true,    
-        weatherInfo:weatherData.data
+        weatherInfo:weatherData.data,
+        moviesShow:true,
+        moviesInfo:movieData.data
+
       })
     }
   
@@ -51,8 +58,8 @@ class App extends React.Component{
       show:false,
       errorMessage:true,
       alertShow:true,
-      weatherShow:false
-      
+      weatherShow:false,
+      moviesShow:false
      
     })
   }
@@ -64,19 +71,7 @@ class App extends React.Component{
 
   }
 
-  // getWeatherData=async()=>{
-  //   let serverRoute = process.env.REACT_APP_SERVER;
-
-  //   const url = `${serverRoute}/weather?locationName=${this.state.location}`;
-   
-  //   const locationArr = await axios.get(url);
-  //   console.log(locationArr.data);
-  //   this.setState({
-  //     weatherInfo:locationArr.data
-  //   })
-
-  // }
-
+  
 
   render() {
     return(
@@ -120,6 +115,14 @@ Not Found!!!!!! Chooooose anoooother one!!!!!
   <Weather
 location={this.state.location}
 weatherInfo={this.state.weatherInfo}
+  />
+
+}
+{
+  this.state.moviesShow&&
+  <Movies
+location={this.state.location}
+moviesInfo={this.state.moviesInfo}
   />
 
 }
