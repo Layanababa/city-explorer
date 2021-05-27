@@ -1,45 +1,35 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card'
+import MoviesDay from './MoviesDay';
+
 class Movies extends React.Component {
-  // constructor(props){
-  //   super(props);
-  //   this.state={
-  //     moviesInfo:{}
-  //   }
-  //   console.log(this.props.moviesInfo);
-  // }
+  
 
   render() {
     return (
       <>
-        {
+{
           this.props.moviesInfo.map((item) => {
               return(
-<Card border="info" style={{ width: '18rem' }}>
-              <Card.Body>
-            <Card.Title>Movies</Card.Title>
-            <Card.Text>
-      
-                    Title : {item.title}<br></br>
-            Overview : {item.overview}<br></br>
-            Average Votes : {item.average_votes}<br></br>
-            Total Votes : {item.total_votes}<br></br>
-            Image_url : {item.image_url}<br></br>
-            Popularity : {item.popularity}<br></br>
-            Released_on :  {item.released_on}<br></br>
-           
-            </Card.Text>
-          </Card.Body>
-        </Card>
+<MoviesDay
+      title={item.title}
+      overview={item.overview}
+      average_votes= {item.average_votes}
+      total_votes= {item.total_votes}
+      image_url={item.image_url}
+      popularity= {item.popularity}
+      released_on={item.released_on}
+      >
+
+
+      </MoviesDay>
               )
               
 
           })
         }
-        <p>
-          moooovies
-           </p>
-
+      
+               
 
 
       </>
