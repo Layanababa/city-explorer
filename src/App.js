@@ -28,28 +28,31 @@ class App extends React.Component{
   getResult=async(item)=>{
     item.preventDefault();
 let server_Link='http://localhost:3001';
-    // let locationURL=` https://eu1.locationiq.com/v1/search.php?key=pk.5940b4e56c7b6248e4e98fb6a9efd8e4&q=${this.state.location.toLowerCase()}&format=json`;
+    let locationURL=` https://eu1.locationiq.com/v1/search.php?key=pk.5940b4e56c7b6248e4e98fb6a9efd8e4&q=${this.state.location.toLowerCase()}&format=json`;
 
 
     // const serverURl=process.env.REACT_APP_SERVER
     const weatherData =  await axios.get(`${server_Link}/weather?locationName=${this.state.location.toLowerCase()}`);
     const movieData=await axios.get(`${server_Link}/movies?locationName=${this.state.location.toLowerCase()}`)
    
-      
+      console.log(movieData.data);
       try{
-        // const weatherData = await axios.get(url);
-      // let resultURl= await axios.get(locationURL);
+    
+
+      let city= await axios.get(locationURL);
       this.setState({
-        locationData:weatherData.data[0],
-        moviLlocationData:movieData.data[0],
+        locationData:city.data[0],
+        // moviLlocationData:movieData.data[0],
         show:true,
         alertShow:false,
         weatherShow:true,    
         weatherInfo:weatherData.data,
         moviesShow:true,
-        moviesInfo:movieData.data
+        moviesInfo:movieData.data,
+
 
       })
+      console.log(this.state.moviesShow);
     }
   
 
@@ -118,17 +121,17 @@ weatherInfo={this.state.weatherInfo}
   />
 
 }
+
+
+</Form>
 {
   this.state.moviesShow&&
   <Movies
 location={this.state.location}
 moviesInfo={this.state.moviesInfo}
-  />
+  ></Movies>
 
 }
-
-</Form>
-
       </>
     )
     }
